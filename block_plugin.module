@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * @file custom_log.module
+ *
+ */
+
+require DRUPAL_ROOT . '/vendor/autoload.php';
+
+function block_plugin_init() {
+
+    $namespaces['Drupal\\BlockPlugin'] = drupal_get_path('module', 'block_plugin') . '/src';
+     
+    $namespacesObject = ArrayObject($namespaces);
+
+    $blockPluginManager = new BlockPluginManager($namespacesObject);
+    
+    var_dump($blockPluginManager->getDefinitions());
+    
+    /*
+    +if (is_array($definitions))
++  foreach ($definitions as $delta => $definition) {
++    $class = $definition['class'];
++    //new \ReflectionClass($object
++    $application->add(new $class());
++  }
++   */
+}

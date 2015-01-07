@@ -1,0 +1,12 @@
+<?php
+
+namespace Drupal\AppConsole;
+
+use Drupal\Core\Plugin\Discovery\AnnotatedClassDiscovery;
+use Drupal\Component\Plugin\PluginManagerBase;
+
+class BlockPluginManager extends PluginManagerBase {
+  public function __construct(\Traversable $namespaces) {
+    $this->discovery = new AnnotatedClassDiscovery('Plugin/Block', $namespaces, 'Drupal\AppConsole\Annotation\Command');
+  }
+}
